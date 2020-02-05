@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <link rel="stylesheet" href="style.css">
+   <title>A/B Testing</title>
+</head>
+
+<body>
+   <div id="button-select-container">
+      <div class="jumbotron">
+         <h1>Select any button</h1>
+      </div>
+      <main class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <button class="btn btn-secondary full">1</button>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+               <button class="btn btn-success full">2</button>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+               <button class="btn btn-secondary full">3</button>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+               <button class="btn btn-secondary full">4</button>
+            </div>
+         </div>
+      </main>
+   </div>
+
+   <div id="survey-container">
+      <div class="jumbotron">
+         <h1>Take the survey:</h1>
+      </div>
+      <div class="container">
+         <a href="https://forms.gle/KcJYm1kVNmjS7ha99">https://forms.gle/KcJYm1kVNmjS7ha99</a>
+         <br>
+         <span>You selected: </span><span id="selected-btn"></span>
+      </div>
+   </div>
+
+   <script>
+      document.querySelector('#survey-container').style.display = 'none';
+
+      let buttons = Array.from(document.querySelectorAll('button'));
+      console.log(buttons)
+      buttons.forEach((btn) => {
+         btn.onclick = btn.ontouchend = (e) => {
+            e.preventDefault();
+            document.querySelector('#selected-btn').innerText = btn.innerText;
+            document.querySelector('#button-select-container').style.display = 'none';
+            document.querySelector('#survey-container').style.display = 'block';
+         }
+      })
+   </script>
+</body>
+
+</html>
